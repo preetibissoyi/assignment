@@ -1,0 +1,26 @@
+{
+  "name": "customersproject",
+  "description": "customers project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nnsahu02/customersProject.git"
+  },
+  "author": "Nrusinghanath sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nnsahu02/customersProject/issues"
+  },
+  "homepage": "https://github.com/nnsahu02/customersProject#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.1",
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
+  }
+}
