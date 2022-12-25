@@ -1,9 +1,14 @@
 const customerModel = require("../model/customerModel")
-const uuid = require('uuid')
+
+const uuid = require('uuid')// NPM PACKEGE IS USE FOR GENERATE RANDOM ID
 
 const { isEmpty, isValidName, isValidEmail, isValidMobile, isVAlidDate } = require("../validation/validation")
 
-//CREATE NEW CUSTOMER
+
+
+
+//------------------------------<CREATE NEW CUSTOMER>-------------------------------------//
+
 const createCustomer = async (req, res) => {
     try {
         let bodyData = req.body
@@ -115,18 +120,9 @@ const createCustomer = async (req, res) => {
             })
         }
 
-        if (!address) {
-            return res.status(400).send({
-                status: false,
-                message: "Please provide address in request body."
-            })
-        }
-        if (!isEmpty(address)) {
-            return res.status(400).send({
-                status: false,
-                message: "The address field can not be."
-            })
-        }
+        if (!address) { return res.status(400).send({status: false,message: "Please provide address in request body." })}
+        if (!isEmpty(address)) return res.status(400).send({status: false,message: "The address field can not be."})
+       
 
         bodyData.customerID = uuid.v4()
         bodyData.status = "ACTIVE"
@@ -140,18 +136,20 @@ const createCustomer = async (req, res) => {
 }
 
 
-//GET CUSTOMER
+//----------------------------------<FETCH CUSTOMER DATA>----------------------------------//
+
 const getCustomer = async (req, res) => {
     try {
         const custmData = await customerModel.find({ status: "ACTIVE" })
 
-        return res.status(200).send({ status: true, data: custmData })
+       return res.status(200).send({ status: true, data: custmData })
     } catch (error) {
         return res.status(500).send({ status: false, message: error.message })
     }
 }
 
-//DELETE CUSTOMER
+//--------------------------------<DELETE CUSTOMER DATA>---------------------------------//
+
 const deleteCustomer = async (req, res) => {
     try {
         const customerID = req.params.customerID.toString()

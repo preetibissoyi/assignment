@@ -3,19 +3,24 @@ const router = express.Router()
 const customerController = require('../controller/customerController')
 const cardController = require("../controller/cardController")
 
-//CREATE CUSTOMER
-router.post("/customer", customerController.createCustomer)
 
-//GET CUSTOMER
-router.get("/customers", customerController.getCustomer)
+//-------------------API FOR CUSTOMER COLLECTION--------------------------//
 
-//DELETE CUSTOMER
-router.delete("/customer/:customerID", customerController.deleteCustomer)
+router.post("/customer", customerController.createCustomer) //CREATE CUSTOMER
 
-//CREATE USER
-router.post("/card", cardController.createCard)
+router.get("/customers", customerController.getCustomer)//GET CUSTOMER
 
-//GET CARD
-router.get('/cards', cardController.getCard)
+router.delete("/customer/:customerID", customerController.deleteCustomer) //DELETE CUSTOMER
+
+
+//--------------------------API FOR CARD COLLECTION--------------------------//
+
+router.post("/card", cardController.createCard)//CREATE USER CARD
+
+router.get('/cards', cardController.getCard)//GET CARD
+
+
+
+
 
 module.exports = router
